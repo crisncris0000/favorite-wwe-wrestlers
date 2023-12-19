@@ -1,0 +1,18 @@
+{
+  "name": "favorite-wwe-wrestlers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "cd client && npm run build",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+  
+}
+
+
