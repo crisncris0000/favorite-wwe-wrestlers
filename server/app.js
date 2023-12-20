@@ -40,7 +40,7 @@ app.post('/api/favorite-wrestler/new', (req, res) => {
     })
 });
 
-app.put('/api/wrestler/update', (req, res) => {
+app.put('/api/favorite-wrestler/update', (req, res) => {
     const { wrestlerName, brand, finisher, userDescription } = req.body;
 
     pool.query(`UPDATE FavoriteWrestler wrestler_name = $1, brand = $2, wrestler_finisher = $3, user_description = $4`
@@ -55,7 +55,20 @@ app.put('/api/wrestler/update', (req, res) => {
             }
         }
     })
-})
+});
+
+app.delete('/api/favorite-wrestler/delete/:id', (req, res) => {
+    const id = Numeber(req.params)
+
+    pool.query('DELETE FROM FavoriteWrestler WHERE FavoriteWrestler.id = $1', id, (error, result) => {
+        if(error) {
+            console.log(error);
+            res.sendStatus(500);
+        } else {
+            res.status(204).json("Updated");
+        }
+    })
+});
 
 app.listen(port, () => {
     console.log(`Server running on port:${port}`);
