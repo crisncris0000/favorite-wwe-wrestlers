@@ -9,7 +9,7 @@ const pool = new Pool({
     host: 'localhost',
     database: 'favorite-wrestlersAPI',
     password: 'root',
-    port: 5472,
+    port: 5432,
 });
 
 app.use(express.json());
@@ -25,13 +25,19 @@ app.get('/api/favorite-wrestlers', (req, res) => {
     });
 });
 
-app.post('/api/wrestler/new', (req, res) => {
-    const { wrestlerName, brand, finisher, userDescription, firstName, lastName } = req.body;
+app.get('')
 
-    console.log(wrestlerName, brand, finisher, userDescription, firstName, lastName);
+app.post('/api/wrestler/new', (req, res) => {
+    const { wrestlerName, brand, finisher, userDescription } = req.body;
+
+    console.log(wrestlerName, brand, finisher, userDescription);
 
     res.sendStatus(200);
 });
+
+app.put('/api/wrestler/update', (req, res) => {
+
+})
 
 app.listen(port, () => {
     console.log(`Server running on port:${port}`);
