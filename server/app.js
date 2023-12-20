@@ -51,7 +51,7 @@ app.put('/api/favorite-wrestler/update', (req, res) => {
                 console.log(error);
                 res.sendStatus(500);
             } else {
-                res.status(204).json("Updated");
+                res.status(200).json("Updated");
             }
         }
     })
@@ -65,7 +65,7 @@ app.delete('/api/favorite-wrestler/delete/:id', (req, res) => {
             console.log(error);
             res.sendStatus(500);
         } else {
-            res.status(204).json("Updated");
+            res.status(200).json("Updated");
         }
     })
 });
