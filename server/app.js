@@ -25,14 +25,19 @@ app.get('/api/favorite-wrestlers', (req, res) => {
     });
 });
 
-app.get('')
-
-app.post('/api/wrestler/new', (req, res) => {
+app.post('/api/favorite-wrestler/new', (req, res) => {
     const { wrestlerName, brand, finisher, userDescription } = req.body;
 
-    console.log(wrestlerName, brand, finisher, userDescription);
-
-    res.sendStatus(200);
+    pool.query(`INSERT INTO FavoriteWrestler(wrestler_name, brand, 
+        wrestler_finisher, user_description) VALUES($1, $2, $3, $4)`, [wrestlerName, brand, finisher, userDescription], 
+        (error, result) => {
+            if(error) {
+                console.log(error);
+                res.sendStatus(500);
+            } else {
+                res.status(204).json("Accepted");
+            }
+    })
 });
 
 app.put('/api/wrestler/update', (req, res) => {
